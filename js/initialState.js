@@ -5,6 +5,7 @@ module.exports = {
   height: 12,
   width: 12,
   skew: 0,
-  alpha: 1,
+  alpha: 0.8,
   angle: -90,
+  lineColor: "rgb(255,255,255)",
 }

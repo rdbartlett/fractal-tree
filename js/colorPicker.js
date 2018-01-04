@@ -1,6 +1,8 @@
 module.exports = colorPicker
 
 function colorPicker(state){
+  var drawNewTree = require('./drawNewTree')
+
   IM  = document.getElementById('input-mask');
   CI1 = document.getElementById('color-input-1');
   CP1 = document.getElementById('color-picker-1');
@@ -144,12 +146,12 @@ function colorPicker(state){
 
   function CB1mousedown(e) {
     drag = true;
-    changeColor(e);
+    changeLineColor(e);
   }
 
   function CB1mousemove(e) {
     if (drag) {
-      changeColor(e);
+      changeLineColor(e);
     }
   }
 
@@ -159,20 +161,25 @@ function colorPicker(state){
 
   // UPDATE TREE WHEN COLOR BLOCK IS CLICKED
 
-  function changeColor(e) {
+  function changeLineColor(e) {
     x = e.offsetX;
     y = e.offsetY;
     var imageData = ctx1.getImageData(x, y, 1, 1).data;
 
-    // TODO: put state.alpha in here:
-    rgbaColor = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ', 1)';
+    var rgbColor = 'rgb(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ')';
 
-    CI1.style.backgroundColor = rgbaColor;
-    console.log("changeColor1")
-    console.log(state)
-    // updateState with new color
-    // draw tree with new state
+    CI1.style.backgroundColor = rgbColor;
+    updateState(state, rgbColor);
     drawNewTree(canvas, state);
+
+    // console.log("changeLineColor");
+    // console.log(state);
+  }
+
+  function updateState(state, lineColor){
+    Object.assign(state, {
+      lineColor: lineColor
+    })
   }
 
   CS1.addEventListener("click", CS1click, false);
@@ -203,13 +210,13 @@ function colorPicker(state){
   var y2 = 0;
   var drag = false;
 
-  var rgbaColorGround = 'rgba(255,255,255,1)';
+  var rgbColorGround = 'rgb(255,255,255)';
 
   ctx3.rect(0, 0, width3, height3);
   fillGradient2();
 
   function fillGradient2() {
-    ctx3.fillStyle = rgbaColorGround;
+    ctx3.fillStyle = rgbColorGround;
     ctx3.fillRect(0, 0, width3, height3);
 
     var grdWhite = ctx4.createLinearGradient(0, 0, width3, 0);
@@ -243,20 +250,20 @@ function colorPicker(state){
     x = e.offsetX;
     y = e.offsetY;
     var imageData = ctx4.getImageData(x, y, 1, 1).data;
-    rgbaColorGround = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ', 1)';
+    rgbColorGround = 'rgb(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ')';
     fillGradient2();
     console.log('CS2click');
   }
 
   function CB2mousedown(e) {
     drag = true;
-    changeColor2(e);
+    changeGroundColor(e);
     console.log('CB2click');
   }
 
   function CB2mousemove(e) {
     if (drag) {
-      changeColor2(e);
+      changeGroundColor(e);
     }
   }
 
@@ -268,17 +275,16 @@ function colorPicker(state){
 
   body  = document.getElementById('body');
 
-  function changeColor2(e) {
+  function changeGroundColor(e) {
     x = e.offsetX;
     y = e.offsetY;
     var imageData = ctx3.getImageData(x, y, 1, 1).data;
 
-    // TODO: put state.alpha in here:
-    rgbaColorGround = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ', 1)';
+    rgbColorGround = 'rgb(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ')';
 
-    CI2.style.backgroundColor = rgbaColorGround;
-    body.style.backgroundColor = rgbaColorGround;
-    console.log('changeColor2');
+    CI2.style.backgroundColor = rgbColorGround;
+    body.style.backgroundColor = rgbColorGround;
+    console.log('changeGroundColor');
   }
 
   CS2.addEventListener("click",     CS2click, false);

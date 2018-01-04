@@ -8,6 +8,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 // if(window.innerWidth < 500){ canvas.height = window.innerHeight - 200; }
 
-sliders.setup(canvas, state) // set up sliders and listeners on them
-colorPicker(state)
+sliders.setup(canvas, state); // set up sliders and listeners on them
+colorPicker(state);
+console.log(state);
 drawNewTree(canvas, state);

@@ -6,7 +6,7 @@ function drawNewTree(canvas, state){
   context = canvas.getContext('2d');
 
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.strokeStyle = 'rgba(255,255,255,1)';
+  context.strokeStyle = state.lineColor;
   context.globalAlpha = state.alpha;
   context.lineWidth = 1;
 
@@ -19,7 +19,6 @@ function drawNewTree(canvas, state){
 
 function drawReflectedTrees(center, state, treeIteration){
   while (state.repeats - treeIteration !== 0) {
-    // console.log("repeats: " + repeats + " treeIteration:" + treeIteration)
     drawTree(center, state, treeIteration);
     treeIteration++;
   }
