@@ -27,14 +27,18 @@ function setup(canvas, state){
   });
 
   for ( var i = 0; i < sliders.length; i++ ) {
-    sliders[i].noUiSlider.on('slide', e => drawTreeFromSliders(canvas, state));
+    sliders[i].noUiSlider.on('slide', e => {
+      updateState(state);
+      drawNewTree(canvas, state);
+      console.log(state)
+    });
   }
 }
 
-function drawTreeFromSliders(canvas, state){
+function updateState(state){
   var size = sliders["size"].noUiSlider.get()
 
-  state = Object.assign({}, state, {
+  Object.assign(state, {
     repeats: Number(sliders["repeats"].noUiSlider.get()),
     depth: sliders["depth"].noUiSlider.get(),
     offset: Number(sliders["offset"].noUiSlider.get()),
@@ -42,15 +46,13 @@ function drawTreeFromSliders(canvas, state){
     height: size,
     width: size,
     skew: Number(sliders["skew"].noUiSlider.get()),
+    alpha: Number(sliders["opacity"].noUiSlider.get()),
   })
 
-  // TODO - re-enable these
-  // context.globalAlpha = Number(sliders["opacity"].noUiSlider.get());
+  // TODO - re-enable:
   // context.strokeStyle = rgbaColor;
-  drawNewTree(canvas, state);
 }
 
 module.exports = {
-  setup,
-  drawTreeFromSliders
+  setup
 }

@@ -6,5 +6,5 @@ module.exports = {
   width: 12,
   skew: 0,
   alpha: 1,
-  angle: -90
+  angle: -90,
 }

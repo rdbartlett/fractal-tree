@@ -6,7 +6,6 @@ function drawNewTree(canvas, state){
   context = canvas.getContext('2d');
 
   context.clearRect(0, 0, canvas.width, canvas.height);
-  // context.fillStyle = 'rgb(255,25,255)';
   context.strokeStyle = 'rgba(255,255,255,1)';
   context.globalAlpha = state.alpha;
   context.lineWidth = 1;
