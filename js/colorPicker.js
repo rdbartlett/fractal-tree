@@ -1,5 +1,3 @@
-module.exports = colorPicker
-
 function colorPicker(state){
   var drawNewTree = require('./drawNewTree')
 
@@ -252,13 +250,13 @@ function colorPicker(state){
     var imageData = ctx4.getImageData(x, y, 1, 1).data;
     rgbColorGround = 'rgb(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ')';
     fillGradient2();
-    console.log('CS2click');
+    // console.log('CS2click');
   }
 
   function CB2mousedown(e) {
     drag = true;
     changeGroundColor(e);
-    console.log('CB2click');
+    // console.log('CB2click');
   }
 
   function CB2mousemove(e) {
@@ -284,7 +282,7 @@ function colorPicker(state){
 
     CI2.style.backgroundColor = rgbColorGround;
     body.style.backgroundColor = rgbColorGround;
-    console.log('changeGroundColor');
+    // console.log('changeGroundColor');
   }
 
   CS2.addEventListener("click",     CS2click, false);
@@ -292,3 +290,5 @@ function colorPicker(state){
   CB2.addEventListener("mouseup",   CB2mouseup, false);
   CB2.addEventListener("mousemove", CB2mousemove, false);
 }
+
+module.exports = colorPicker

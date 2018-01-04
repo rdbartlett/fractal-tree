@@ -2,7 +2,7 @@ var noUiSlider = require('nouislider')
 
 var drawNewTree = require('./drawNewTree')
 
-var sliders 
+var sliders
 
 function setup(canvas, state){
   sliders = document.getElementsByClassName('sliders');
@@ -27,12 +27,19 @@ function setup(canvas, state){
   });
 
   for ( var i = 0; i < sliders.length; i++ ) {
-    sliders[i].noUiSlider.on('slide', e => {
+    sliders[i].noUiSlider.on('update', e => {
       updateState(state);
       drawNewTree(canvas, state);
-      console.log(state)
     });
   }
+}
+
+function inc(index){
+  sliders[index].noUiSlider.set(Number(sliders[index].noUiSlider.get()) + sliders[index].noUiSlider.options.step);
+}
+
+function dec(index){
+  sliders[index].noUiSlider.set(Number(sliders[index].noUiSlider.get()) - sliders[index].noUiSlider.options.step);
 }
 
 function updateState(state){
@@ -48,11 +55,10 @@ function updateState(state){
     skew: Number(sliders["skew"].noUiSlider.get()),
     alpha: Number(sliders["opacity"].noUiSlider.get()),
   })
-
-  // TODO - re-enable:
-  // context.strokeStyle = rgbaColor;
 }
 
 module.exports = {
-  setup
+  setup,
+  inc,
+  dec
 }
