@@ -5,11 +5,13 @@
     <link rel="stylesheet" href="css/style.css">
 
 <!-- Todo
-* Refactor code
+
+* fix presets
+* restore basic animations
+* restore points
 * Line colour + Background: need better colour picker ui, including opacity
-* Display nodes but not branches
 * Add screenshot button (or upload to imgur button)
-* different input modes: e.g. text input, or imogen's gloves
+* take input from different sources
 * Different numbers of branches at different depths, e.g. 1, 2, 3, 5, 8
 * Modify relationship between recursive depth and branch length
 * Add animation mode, e.g. for each param, set a range and a rate of change
@@ -17,7 +19,7 @@
 * add random generator
 * add genetic breeding
 * save user presets
-* export for vector editing (svg?)
+* export for vector editing (Might require Fabric.js - https://stackoverflow.com/questions/10273516)
 
 
  -->
@@ -43,9 +45,20 @@
   </div>
 
   <div id="controls">
-    <button id="keybindings">Keyboard shortcuts</button>
-    <button id="toggleControls">Hide controls</button>
     <div id="controlsWrapper">
+
+<!--       <div id="buttonControls">
+        <button id="presetBtnA">1</button>
+        <button id="presetBtnB">2</button>
+        <button id="presetBtnC">3</button>
+        <button id="presetBtnD">4</button>
+        <button id="presetBtnE">5</button>
+        <button id="presetBtnF">6</button>
+        <button id="presetBtnG">7</button>
+        <button id="presetBtnH">8</button>
+        <button id="stroke">Points</button>
+        <br /><br />
+      </div> -->
 
       <div id="sliderControls">
         <div class="sliderLabels" title="The angle of the right branch">Quirkk</div><div class="sliders" id="skew"></div>
@@ -74,81 +87,11 @@
           </div>
         </div>
       </div>
-      <div id="buttonControls">
-        <button id="presetBtnA">Preset A</button>
-        <button id="presetBtnB">Preset B</button>
-        <button id="presetBtnC">Preset C</button>
-        <button id="presetBtnD">Preset D</button>
-      </div>
+
     </div>
+    <button id="keybindings">Keyyyy</button>
+    <button id="toggleControls">Control</button>
   </div>
-
-
-<!-- 
-  <script src="js/color-picker.js"></script>
-  <script src="js/mousetrap.min.js"></script>
- -->
-
-  <script type="text/javascript">
-    // TODO - enable this whole section
-    // INIT KEYBINDINGS
-
-
-    function loadPreset(index){
-      sliders["repeats"].noUiSlider.set(preset[index].repeats);
-      sliders["depth"].noUiSlider.set(preset[index].depth);
-      sliders["offset"].noUiSlider.set(preset[index].offset);
-      sliders["size"].noUiSlider.set(preset[index].size);
-      sliders["skew"].noUiSlider.set(preset[index].skew);
-      sliders["opacity"].noUiSlider.set(preset[index].opacity);
-
-      drawTreeFromSliders()
-    }
-
-    var toggle = true;
-
-    document.getElementById('toggleControls').addEventListener('click', function(){
-      if(toggle){
-        document.getElementById('controlsWrapper').style.setProperty('display', 'none');
-        document.getElementById('toggleControls').innerHTML = "Show";
-        toggle = false;
-      }
-      else{
-        document.getElementById('controlsWrapper').style.setProperty('display', 'block');
-        document.getElementById('toggleControls').innerHTML = "Hide";
-        toggle = true;
-      }
-    });
-
-    document.getElementById('presetBtnA').addEventListener('click', function(){
-      loadPreset(0)
-    });
-
-    document.getElementById('presetBtnB').addEventListener('click', function(){
-      loadPreset(1)
-    });
-
-    document.getElementById('presetBtnC').addEventListener('click', function(){
-      loadPreset(2)
-    });
-
-    document.getElementById('presetBtnD').addEventListener('click', function(){
-      loadPreset(4)
-    });
-
-    function drawTreeFromSliders(){
-      repeats = Number(sliders["repeats"].noUiSlider.get());
-      depth = sliders["depth"].noUiSlider.get();
-      offset = Number(sliders["offset"].noUiSlider.get());
-      size = sliders["size"].noUiSlider.get();
-      height = width = size;
-      skew = Number(sliders["skew"].noUiSlider.get());
-      context.globalAlpha = Number(sliders["opacity"].noUiSlider.get());
-      context.strokeStyle = rgbaColor;
-      drawNewTree(rootX, rootY, -90, depth);
-    }
-
-  </script>
 
     <script src='./build.js'></script>
   </body>

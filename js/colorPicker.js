@@ -169,9 +169,6 @@ function colorPicker(state){
     CI1.style.backgroundColor = rgbColor;
     updateState(state, rgbColor);
     drawNewTree(canvas, state);
-
-    // console.log("changeLineColor");
-    // console.log(state);
   }
 
   function updateState(state, lineColor){

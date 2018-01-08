@@ -27,7 +27,7 @@ function setup(canvas, state){
   });
 
   for ( var i = 0; i < sliders.length; i++ ) {
-    sliders[i].noUiSlider.on('update', e => {
+    sliders[i].noUiSlider.on('set', e => {
       updateState(state);
       drawNewTree(canvas, state);
     });
@@ -57,8 +57,21 @@ function updateState(state){
   })
 }
 
+function updateSliders(state){
+  // var { repeats, depth, width, height, skew, offset } = state
+  console.log(state)  
+  sliders["depth"].noUiSlider.set(state.depth)
+  sliders["repeats"].noUiSlider.set(state.repeats)
+  sliders["offset"].noUiSlider.set(state.offset)
+  sliders["size"].noUiSlider.set(state.height)
+  sliders["skew"].noUiSlider.set(state.skew)
+  sliders["opacity"].noUiSlider.set(state.alpha)
+}
+
+
 module.exports = {
   setup,
+  updateSliders,
   inc,
   dec
 }

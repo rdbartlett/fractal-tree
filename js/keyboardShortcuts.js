@@ -1,6 +1,7 @@
 var Mousetrap = require('mousetrap')
+var presets = require('./presets')
 
-function setup(sliders){
+function setup(sliders, state){
   Mousetrap.bind('q', function() { sliders.inc(0); });
   Mousetrap.bind('w', function() { sliders.inc(1); });
   Mousetrap.bind('e', function() { sliders.inc(2); });
@@ -13,23 +14,36 @@ function setup(sliders){
   Mousetrap.bind('f', function() { sliders.dec(3); });
   Mousetrap.bind('g', function() { sliders.dec(4); });
   Mousetrap.bind('h', function() { sliders.dec(5); });
-  Mousetrap.bind('1', function() { loadPreset(0); });
-  Mousetrap.bind('2', function() { loadPreset(1); });
-  Mousetrap.bind('3', function() { loadPreset(2); });
-  Mousetrap.bind('4', function() { loadPreset(3); });
+
+  // Mousetrap.bind('1', function() { presets.load(0, state); });
+  // Mousetrap.bind('2', function() { presets.load(1, state); });
+  // Mousetrap.bind('3', function() { presets.load(2, state); });
+  // Mousetrap.bind('4', function() { presets.load(3, state); });
+  // Mousetrap.bind('5', function() { presets.load(4, state); });
+  // Mousetrap.bind('6', function() { presets.load(5, state); });
+  // Mousetrap.bind('7', function() { presets.load(6, state); });
+  // Mousetrap.bind('8', function() { presets.load(7, state); });
+
+  document.getElementById('keybindings').addEventListener('click', function(){
+    alert("Keybindings:\nMove slider 1 with Q+A, slider 2 with W+A, etc.");
+  });
+
+  var toggle = true;
+
+  document.getElementById('toggleControls').addEventListener('click', function(){
+    if(toggle){
+      document.getElementById('controlsWrapper').style.setProperty('display', 'none');
+      document.getElementById('toggleControls').innerHTML = "Show";
+      toggle = false;
+    }
+    else{
+      document.getElementById('controlsWrapper').style.setProperty('display', 'block');
+      document.getElementById('toggleControls').innerHTML = "Hide";
+      toggle = true;
+    }
+  });
 }
 
-
-var preset = [
-  {repeats: 1, depth: 10, offset: 14, size: 6, skew: 7, opacity: 1}
-, {repeats: 2, depth: 9, offset: 44, size: 6, skew: -26, opacity: 1}
-, {repeats: 6, depth: 14, offset: 60, size: 20, skew: 0, opacity: 0.13}
-, {repeats: 5, depth: 9, offset: 180, size: 20, skew: -60, opacity: 0.25}
-];
-
-document.getElementById('keybindings').addEventListener('click', function(){
-  alert("Keybindings:\nPress 1-4 keys for presets.\nMove slider 1 with Q+A, slider 2 with W+A, etc.");
-});
 
 module.exports = {
   setup
