@@ -15,6 +15,8 @@ function setup(sliders, state){
   Mousetrap.bind('g', function() { sliders.dec(4); });
   Mousetrap.bind('h', function() { sliders.dec(5); });
 
+  Mousetrap.bind('c', function() { toggleControlBoard(); });
+
   // Mousetrap.bind('1', function() { presets.load(0, state); });
   // Mousetrap.bind('2', function() { presets.load(1, state); });
   // Mousetrap.bind('3', function() { presets.load(2, state); });
@@ -28,20 +30,19 @@ function setup(sliders, state){
     alert("Keybindings:\nMove slider 1 with Q+A, slider 2 with W+A, etc.");
   });
 
-  var toggle = true;
+  var tgl = true;
 
-  document.getElementById('toggleControls').addEventListener('click', function(){
-    if(toggle){
+  function toggleControlBoard(){
+    if(tgl){
       document.getElementById('controlsWrapper').style.setProperty('display', 'none');
-      document.getElementById('toggleControls').innerHTML = "Show";
-      toggle = false;
+      tgl = false;
     }
     else{
       document.getElementById('controlsWrapper').style.setProperty('display', 'block');
-      document.getElementById('toggleControls').innerHTML = "Hide";
-      toggle = true;
+      tgl = true;
     }
-  });
+  }
+  document.getElementById('toggleControls').addEventListener('click', toggleControlBoard);
 }
 
 
