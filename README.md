@@ -8,10 +8,3 @@
   - you can use `npm run watch` to run a process which will run the build any time the js changes
   - if the `build.js` is too big, we can do some minification later
 5. open `index.html`
-
-
-This refactoring isn't complete: 
-  - [ ] alpha slider broken
-  - [ ] presets not yet refactored
-  - [ ] keyboard shortcuts not refactored
-
