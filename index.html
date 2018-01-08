@@ -7,7 +7,6 @@
 <!-- Todo
 
 * keep refactoring
-* fix presets
 * restore basic animations
 * Add animation mode, e.g. for each param, set a range and a rate of change
 * add params to URL to make patterns shareable
@@ -17,6 +16,7 @@
 * take input from different sources
 * see what happens with different numbers of branches at different depths, e.g. 1, 2, 3, 5, 8
 * see what happens when changing relationship between recursive depth and branch length
+* see what happens with fractions for angle/offset, not whole numbers. E.g. 360/16 (22.5) probably looks nice
 * add random generator
 * add genetic breeding
 * export for vector editing (Might require Fabric.js - https://stackoverflow.com/questions/10273516)
@@ -47,7 +47,7 @@
   <div id="controls">
     <div id="controlsWrapper">
 
-<!--       <div id="buttonControls">
+      <div id="buttonControls">
         <button id="presetBtnA">1</button>
         <button id="presetBtnB">2</button>
         <button id="presetBtnC">3</button>
@@ -56,9 +56,9 @@
         <button id="presetBtnF">6</button>
         <button id="presetBtnG">7</button>
         <button id="presetBtnH">8</button>
-        <button id="stroke">Points</button>
+        <button id="presetBtnI">9</button>
         <br /><br />
-      </div> -->
+      </div>
 
       <div id="sliderControls">
         <div class="sliderLabels" title="The angle of the right branch">Quirkk</div><div class="sliders" id="skew"></div>

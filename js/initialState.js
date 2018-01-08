@@ -1,11 +1,11 @@
 module.exports = {
-  repeats: 6,
-  depth: 5,
-  offset: 25,
-  height: 12,
-  width: 12,
-  skew: 0,
-  alpha: 0.8,
+  repeats: 1,
+  depth: 7,
+  offset: 19,
+  height: 6,
+  width: 6,
+  skew: 7,
+  alpha: 0.7,
   angle: -90,
   lineColor: "rgb(255,255,255)",
 }

@@ -58,8 +58,6 @@ function updateState(state){
 }
 
 function updateSliders(state){
-  // var { repeats, depth, width, height, skew, offset } = state
-  console.log(state)  
   sliders["depth"].noUiSlider.set(state.depth)
   sliders["repeats"].noUiSlider.set(state.repeats)
   sliders["offset"].noUiSlider.set(state.offset)
