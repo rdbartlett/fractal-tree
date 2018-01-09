@@ -27,7 +27,7 @@ function setup(canvas, state){
   });
 
   for ( var i = 0; i < sliders.length; i++ ) {
-    sliders[i].noUiSlider.on('set', e => {
+    sliders[i].noUiSlider.on('update', e => {
       updateState(state);
       drawNewTree(canvas, state);
     });
