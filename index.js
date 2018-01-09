@@ -1,5 +1,7 @@
+var conf = require('conf')
 var drawNewTree = require('./js/drawNewTree')
-var state = require('./js/initialState')
+
+var state = Object.assign({}, conf.initialState);
 
 var sliders = require('./js/sliders')
 var colorPicker = require('./js/colorPicker')
@@ -20,4 +22,3 @@ window.dispatchEvent(new UIEvent('resize'));
 
 presets.setup();
 keyboardShortcuts.setup(sliders, state);
-
